@@ -4,14 +4,14 @@ import 'package:html/dom.dart' as dom;
 
 import '../../../models/players.dart';
 
-class HighScore extends StatefulWidget {
-  const HighScore({super.key});
+class HighScoreScreen extends StatefulWidget {
+  const HighScoreScreen({super.key});
 
   @override
-  State<HighScore> createState() => _HighScoreState();
+  State<HighScoreScreen> createState() => _HighScoreScreenState();
 }
 
-class _HighScoreState extends State<HighScore> {
+class _HighScoreScreenState extends State<HighScoreScreen> {
   List<Players> players = [];
 
   @override

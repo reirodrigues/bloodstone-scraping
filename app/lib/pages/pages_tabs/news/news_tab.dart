@@ -1,3 +1,4 @@
+import 'package:app/components/custom_shimer.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/dom.dart' as dom;
@@ -13,7 +14,7 @@ class NewsTab extends StatefulWidget {
 
 class _NewsTabState extends State<NewsTab> {
   List<Article> articles = [];
-  bool isLoading = true;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -65,7 +66,7 @@ class _NewsTabState extends State<NewsTab> {
     });
 
     setState(() {
-      isLoading = false;
+      isLoading = true;
     });
   }
 
@@ -85,14 +86,9 @@ class _NewsTabState extends State<NewsTab> {
               ),
             ),
           ),
-          isLoading
-              ? const Expanded(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                )
-              : Expanded(
-                  child: ListView.builder(
+          Expanded(
+            child: isLoading
+                ? ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
@@ -101,7 +97,7 @@ class _NewsTabState extends State<NewsTab> {
                     itemBuilder: ((context, index) {
                       final article = articles[index];
 
-                      return GestureDetector(
+                      return InkWell(
                         onTap: () async {
                           print(article.url);
                           final Uri url = Uri.parse(article.url);
@@ -141,8 +137,25 @@ class _NewsTabState extends State<NewsTab> {
                         ),
                       );
                     }),
+                  )
+                : ListView(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(12),
+                    children: List.generate(
+                      10,
+                      (index) => Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        child: CustomShimmer(
+                          height: 80,
+                          width: 50,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+          ),
         ],
       ),
     );

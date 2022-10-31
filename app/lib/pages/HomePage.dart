@@ -1,8 +1,8 @@
+import 'package:app/pages/pages_tabs/heighscore/highscore_tab.dart';
 import 'package:app/pages/pages_tabs/news/news_tab.dart';
 import 'package:app/pages/pages_tabs/shop/shop_tab.dart';
 import 'package:app/pages/pages_tabs/streamers/streamers_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,28 +24,29 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const NewsTab(),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    'EM BREVE TABELA DE XP',
-                    style: GoogleFonts.exo2(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const CircularProgressIndicator(),
-              ],
-            ),
-          ),
-          const StreamersTab(),
-          const ShopTab(),
+        children: const [
+          NewsTab(),
+          // Container(
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       Center(
+          //         child: Text(
+          //           'EM BREVE TABELA DE XP',
+          //           style: GoogleFonts.exo2(
+          //             fontSize: 30,
+          //             fontWeight: FontWeight.bold,
+          //             color: Colors.black,
+          //           ),
+          //         ),
+          //       ),
+          //       const CircularProgressIndicator(),
+          //     ],
+          //   ),
+          // ),
+          HighScoreTab(),
+          StreamersTab(),
+          ShopTab(),
         ],
       ),
       bottomNavigationBar: Container(
@@ -65,7 +66,12 @@ class _HomePageState extends State<HomePage> {
             onTap: (index) {
               setState(() {
                 currentIndex = index;
-                pageController.jumpToPage(index);
+                // pageController.jumpToPage(index);
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.ease,
+                );
               });
             },
             currentIndex: currentIndex,

@@ -23,14 +23,27 @@ class _HighScoreTabState extends State<HighScoreTab> {
 
   Future getWebsiteData() async {
     final url = Uri.parse('https://www.bloodstoneonline.com/pt/pontuacao/');
-    final response = await http
-        .post(url, body: {'server': '0', 'vocation': '0', 'category': '0'});
-    dom.Document html = dom.Document.html(response.body);
+    final request = http.MultipartRequest('POST', url);
+    request.fields['server'] = '2';
+    request.fields['vocation'] = '0';
+    request.fields['category'] = '0';
+
+    var response = await request.send();
+    var responsed = await http.Response.fromStream(response);
+
+    dom.Document html = dom.Document.html(responsed.body);
 
     final nomes = html
-        .querySelectorAll('.table, .table-bordered, .dataTable')
+        .querySelectorAll('table > tbody > tr > td:nth-child(3)')
         .map((element) => element.innerHtml.trim())
         .toList();
+
+    if (response.statusCode == 200) {
+      print("SUCCESS");
+      print(responsed.body);
+    } else {
+      print("ERROR");
+    }
 
     print('Count: ${nomes.length}');
     for (final nome in nomes) {
