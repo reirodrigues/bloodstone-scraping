@@ -1,3 +1,4 @@
+import 'package:app/components/custom_shimer.dart';
 import 'package:app/components/item_tile.dart';
 import 'package:app/models/streamer.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +34,6 @@ class _StreamersTabState extends State<StreamersTab> {
         .map((element) => element.innerHtml.trim())
         .toList();
 
-    print('Count: ${nicks.length}');
-    for (final nick in nicks) {
-      debugPrint(nick);
-    }
-
     // ------------------------------------------------------------------------ url
 
     final urls = html
@@ -45,21 +41,12 @@ class _StreamersTabState extends State<StreamersTab> {
         .map((element) => '${element.attributes['href']}')
         .toList();
 
-    print('Count: ${urls.length}');
-    for (final url in urls) {
-      debugPrint(url);
-    }
-
     // ------------------------------------------------------------------------ Images
 
     final urlImages = html
         .querySelectorAll('div.news-each > a > picture > img')
         .map((element) => element.attributes['src']!)
         .toList();
-    print('Count: ${urlImages.length}');
-    for (final urlImage in urlImages) {
-      debugPrint(urlImage);
-    }
 
     // ------------------------------------------------------------------------ spectators
 
@@ -68,22 +55,12 @@ class _StreamersTabState extends State<StreamersTab> {
         .map((element) => element.innerHtml.trim())
         .toList();
 
-    print('Count: ${nicks.length}');
-    for (final nick in nicks) {
-      debugPrint(nick);
-    }
-
     // ------------------------------------------------------------------------ descriptions
 
     final descriptions = html
         .querySelectorAll('div.news-each > div > p > a.f-white')
         .map((element) => element.innerHtml.trim())
         .toList();
-
-    print('Count: ${nicks.length}');
-    for (final nick in nicks) {
-      debugPrint(nick);
-    }
 
     setState(() {
       streamers = List.generate(
@@ -125,13 +102,8 @@ class _StreamersTabState extends State<StreamersTab> {
 
           // -------------------------------------------------------------- Gridview
           Expanded(
-            child: isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                :
-                // streamers.length != null ?
-                GridView.builder(
+            child: !isLoading
+                ? GridView.builder(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                     physics: const BouncingScrollPhysics(),
                     gridDelegate:
@@ -147,8 +119,24 @@ class _StreamersTabState extends State<StreamersTab> {
                         streamer: streamers[index],
                       );
                     },
+                  )
+                : GridView.count(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    physics: const BouncingScrollPhysics(),
+                    crossAxisCount: 1,
+                    mainAxisSpacing: 30,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 9 / 10,
+                    children: List.generate(
+                      5,
+                      (index) => CustomShimmer(
+                        height: double.infinity,
+                        width: double.infinity,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
                   ),
-          )
+          ),
           // Categories(),
         ],
       ),

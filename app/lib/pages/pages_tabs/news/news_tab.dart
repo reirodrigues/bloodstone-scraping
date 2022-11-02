@@ -49,10 +49,6 @@ class _NewsTabState extends State<NewsTab> {
         .map((element) => element.innerHtml.trim())
         .toList();
 
-    print('Count: ${dates.length}');
-    for (final date in dates) {
-      debugPrint(date);
-    }
     setState(() {
       articles = List.generate(
         titles.length,
@@ -99,7 +95,6 @@ class _NewsTabState extends State<NewsTab> {
 
                       return InkWell(
                         onTap: () async {
-                          print(article.url);
                           final Uri url = Uri.parse(article.url);
 
                           if (!await launchUrl(

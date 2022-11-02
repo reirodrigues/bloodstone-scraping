@@ -1,15 +1,15 @@
-class Players {
-  final String classificacao;
-  final String nome;
-  final String vocacao;
-  final String nivel;
-  final String experiencia;
+class Player {
+  final String rank;
+  final String name;
+  final String vocation;
+  final String level;
+  final String experience;
 
-  const Players({
-    required this.classificacao,
-    required this.nome,
-    required this.vocacao,
-    required this.nivel,
-    required this.experiencia,
+  const Player({
+    required this.rank,
+    required this.name,
+    required this.vocation,
+    required this.level,
+    required this.experience,
   });
 }

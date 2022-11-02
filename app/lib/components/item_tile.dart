@@ -14,7 +14,6 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        print(streamer.url);
         final Uri url = Uri.parse(streamer.url);
 
         if (!await launchUrl(
@@ -67,22 +66,20 @@ class ItemTile extends StatelessWidget {
               //--------------------------------------------------------- description
               SizedBox(
                 height: 100,
-                child: Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Text(
-                        streamer.description,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          height: 1.5,
-                        ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Text(
+                      streamer.description,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

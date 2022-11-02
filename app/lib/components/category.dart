@@ -9,19 +9,17 @@ class Categories extends StatefulWidget {
 
 class _CategoriesState extends State<Categories> {
   List<String> categories = [
-    'Novidades',
-    'Tabela XP',
-    'Doação',
-    'Mídia',
-    'Streamers'
+    'Ruby',
+    'Onix',
   ];
 
   int selectedIndex = 0;
+  bool isOnix = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: SizedBox(
           height: 25,
           child: ListView.builder(
@@ -42,9 +40,9 @@ class _CategoriesState extends State<Categories> {
         });
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               categories[index],
@@ -55,7 +53,7 @@ class _CategoriesState extends State<Categories> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 4),
-              width: 30,
+              width: 100,
               height: 2,
               color: selectedIndex == index ? Colors.black : Colors.transparent,
             ),

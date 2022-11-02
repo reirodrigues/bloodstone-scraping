@@ -26,24 +26,6 @@ class _HomePageState extends State<HomePage> {
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           NewsTab(),
-          // Container(
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       Center(
-          //         child: Text(
-          //           'EM BREVE TABELA DE XP',
-          //           style: GoogleFonts.exo2(
-          //             fontSize: 30,
-          //             fontWeight: FontWeight.bold,
-          //             color: Colors.black,
-          //           ),
-          //         ),
-          //       ),
-          //       const CircularProgressIndicator(),
-          //     ],
-          //   ),
-          // ),
           HighScoreTab(),
           StreamersTab(),
           ShopTab(),

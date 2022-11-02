@@ -14,7 +14,6 @@ class ShopItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        print(shop.url);
         final Uri url = Uri.parse(shop.url);
 
         if (!await launchUrl(
