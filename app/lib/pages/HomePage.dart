@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart),
-                label: 'Loja',
+                label: 'Shop',
               ),
             ],
           ),
