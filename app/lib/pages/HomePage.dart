@@ -2,6 +2,7 @@ import 'package:app/pages/pages_tabs/heighscore/highscore_tab.dart';
 import 'package:app/pages/pages_tabs/news/news_tab.dart';
 import 'package:app/pages/pages_tabs/shop/shop_tab.dart';
 import 'package:app/pages/pages_tabs/streamers/streamers_tab.dart';
+import 'package:app/pages/pages_tabs/tabela_xp/tabela_xp_tab.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage> {
           HighScoreTab(),
           StreamersTab(),
           ShopTab(),
+          TabelaXpTab(),
         ],
       ),
       bottomNavigationBar: Container(
@@ -66,12 +68,16 @@ class _HomePageState extends State<HomePage> {
                 label: 'Highscore',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.list),
+                icon: Icon(Icons.desktop_windows),
                 label: 'Streamers',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart),
                 label: 'Shop',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.list),
+                label: 'Tabela Xp',
               ),
             ],
           ),
