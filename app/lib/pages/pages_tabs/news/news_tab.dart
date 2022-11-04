@@ -123,6 +123,7 @@ class _NewsTabState extends State<NewsTab> {
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.brown,
                                   ),
                                 ),
                                 subtitle: Text(article.date),

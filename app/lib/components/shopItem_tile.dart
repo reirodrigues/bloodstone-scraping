@@ -35,10 +35,12 @@ class ShopItemTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               //--------------------------------------------------------- image
-              Image.network(
-                shop.urlImage,
-                width: 120,
-                height: 120,
+              Expanded(
+                child: Image.network(
+                  shop.urlImage,
+                  width: 120,
+                  height: 120,
+                ),
               ),
               //--------------------------------------------------------- Title
               Padding(
@@ -54,16 +56,14 @@ class ShopItemTile extends StatelessWidget {
               ),
 
               //--------------------------------------------------------- description
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Text(
-                      shop.description,
-                      style: const TextStyle(
-                        fontSize: 15,
-                      ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Text(
+                    shop.description,
+                    style: const TextStyle(
+                      fontSize: 15,
                     ),
                   ),
                 ),

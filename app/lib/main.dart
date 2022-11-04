@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 
 void main(context) {
   runApp(
-    const MaterialApp(
+    MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+      ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
     ),
   );
 }
