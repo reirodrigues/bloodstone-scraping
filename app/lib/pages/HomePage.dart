@@ -29,8 +29,8 @@ class _HomePageState extends State<HomePage> {
           NewsTab(),
           HighScoreTab(),
           StreamersTab(),
-          ShopTab(),
           TabelaXpTab(),
+          ShopTab(),
         ],
       ),
       bottomNavigationBar: Container(
@@ -72,12 +72,12 @@ class _HomePageState extends State<HomePage> {
                 label: 'Streamers',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart),
-                label: 'Shop',
+                icon: Icon(Icons.assessment_outlined),
+                label: 'Experience',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                label: 'Exp.',
+                icon: Icon(Icons.shopping_cart),
+                label: 'Shop',
               ),
             ],
           ),
