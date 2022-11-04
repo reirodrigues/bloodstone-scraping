@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.list),
-                label: 'Tabela Xp',
+                label: 'Exp.',
               ),
             ],
           ),
