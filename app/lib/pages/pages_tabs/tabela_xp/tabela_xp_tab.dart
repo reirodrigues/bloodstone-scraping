@@ -122,23 +122,30 @@ class _TabelaXpTabState extends State<TabelaXpTab> {
                               child: ListTile(
                                 dense: index == 0 ? false : true,
                                 leading: Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 5, left: 10),
-                                  child: Text(
-                                    (index + 1).toString(),
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: index == 0
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                  ),
+                                  padding: index == 0
+                                      ? const EdgeInsets.only(top: 5, left: 0)
+                                      : const EdgeInsets.only(top: 5, left: 10),
+                                  child: index == 0
+                                      ? Image.asset(
+                                          'assets/images/top1.png',
+                                          width: 70,
+                                          fit: BoxFit.fitWidth,
+                                        )
+                                      : Text(
+                                          (index + 1).toString(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: index == 0
+                                                ? Colors.white
+                                                : Colors.black,
+                                          ),
+                                        ),
                                 ),
                                 title: Text(
                                   player.nome,
                                   style: TextStyle(
-                                    fontSize: index == 0 ? 20 : 15,
+                                    fontSize: index == 0 ? 18 : 15,
                                     fontWeight: FontWeight.bold,
                                     color: index == 0
                                         ? Colors.white
